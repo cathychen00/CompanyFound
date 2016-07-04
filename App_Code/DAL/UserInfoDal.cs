@@ -86,4 +86,16 @@ public class UserInfoDal
         string update = "update userinfo set username='" + userInfo.UserName + "',userpwd='" +userInfo.UserPwd + "',usersexID='" + userInfo.usersexID + "',userlevelID='" + userInfo.userlevelID + "' where userinfoID='" + userInfo.userinfoID + "'";
         return da.ExceSQL(update);
     }
+
+    /// <summary>
+    /// 删除用户
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public static bool Delete(int id)
+    {
+        string sql = "delete from userinfo where userinfoID='" + id + "'";
+        SqlData da = new SqlData();
+        return da.ExceSQL(sql);
+    }
 }

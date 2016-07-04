@@ -229,7 +229,6 @@ public partial class chaxun : System.Web.UI.Page
                     string userlevel = Session["userlevel"].ToString();
                     switch (tj)
                     {
-
                         case ("查询,修改用户信息"):
                             if (userlevel == "普通用户")
                             {
@@ -304,10 +303,7 @@ public partial class chaxun : System.Web.UI.Page
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
 
-
         string lb = Request.QueryString["查询类别"];
-
-
 
         string sqlstr = null;
         SqlData sd = new SqlData();
@@ -319,55 +315,73 @@ public partial class chaxun : System.Web.UI.Page
             case ("购进信息"):
 
                 sqlstr = "delete from gy_Gou where gou_ID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
-
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
 
                 break;
             case ("销售信息"):
 
                 sqlstr = "delete from gy_xiao where gy_xiaoID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
                 break;
             case ("销售票据"):
 
                 sqlstr = "delete from gy_xiao_billno where gy_xiao_billnoID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
                 break;
             case ("运输汇总"):
 
                 sqlstr = "delete from gy_yun where gy_yunID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
                 break;
             case ("火车皮纪录"):
                 sqlstr = "delete from gy_train where gy_trainID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
-
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
                 break;
             case ("顾客信息"):
                 sqlstr = "delete from gy_client where gy_clientID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
                 break;
 
             case ("产地信息"):
                 sqlstr = "delete from gy_KName where k_ID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
+                sqlcon = new SqlConnection(strCon);
+                sqlcom = new SqlCommand(sqlstr, sqlcon);
+                sqlcon.Open();
+                sqlcom.ExecuteNonQuery();
+                sqlcon.Close();
                 break;
             case ("用户信息"):
-                sqlstr = "delete from userinfo where userinfoID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
+                int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+                UserInfoDal.Delete(id);
                 break;
-
-
         }
-
-
-        sqlcon = new SqlConnection(strCon);
-        sqlcom = new SqlCommand(sqlstr, sqlcon);
-        sqlcon.Open();
-        sqlcom.ExecuteNonQuery();
-        sqlcon.Close();
+        
         BindData();
-
-
-
     }
-
-
-
-
-
     
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
@@ -417,11 +431,6 @@ public partial class chaxun : System.Web.UI.Page
             Response.Redirect(url);
         }
     }
-
-
-
-
-
 }
 
 
