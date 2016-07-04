@@ -275,13 +275,15 @@ public partial class chaxun : System.Web.UI.Page
         ExportDataGrid("online/ms-excel", "111.xls");
 
     }
+
+    #region 导出Excel
     private void ExportDataGrid(string FileType, string FileName)
     {
         Response.Clear();
         Response.Buffer = true;
-        Response.Charset = "utf-";
+        Response.Charset = "utf-8";
         Response.AppendHeader("Content-Disposition", "attachment;filename=FileFlow.xls");
-        Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-7");
+        Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-8");
         Response.ContentType = "application/ms-excel";
         this.EnableViewState = false;
         System.IO.StringWriter oStringWriter = new System.IO.StringWriter();
@@ -290,9 +292,7 @@ public partial class chaxun : System.Web.UI.Page
         Response.Write(oStringWriter.ToString());
         Response.End();
     }
-
-
-
+    #endregion
 
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
