@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using System.Text;
 
+/// <summary>
+/// 顶部导航菜单
+/// </summary>
 public partial class menu : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!this.IsPostBack)
+        if (!IsPostBack)
         {
-
             StringBuilder strMenu = new StringBuilder();
             if (Session["userlevel"] != null && Session["userlevel"].ToString() != string.Empty)
             {
-                string State = Session["userlevel"].ToString();
-                switch (State)
+                string state = Session["userlevel"].ToString();
+                switch (state)
                 {
                     case "普通用户":
                         strMenu.Append(Session["UserName"]);
@@ -43,6 +36,7 @@ public partial class menu : System.Web.UI.UserControl
                         strMenu.Append("|");
                         strMenu.Append("<span class='bold'><a href='addproducingarea.aspx'>产地信息</a></span>");
                         break;
+
                     case "管理员":
                         strMenu.Append(Session["UserName"]);
                         strMenu.Append(":  ");
@@ -65,15 +59,14 @@ public partial class menu : System.Web.UI.UserControl
                         strMenu.Append("|");
                         strMenu.Append("<span class='bold'><a href='addproducingarea.aspx'>产地信息</a></span>");
                         break;
-                   
                 }
             }
             else
             {
                 strMenu.Append("游客：");
-                
                 strMenu.Append("|<span class='bold'><a href='default.aspx'>登陆</a></span>");
             }
+
             this.LabMenu.Text = strMenu.ToString();
         }
     }
