@@ -39,6 +39,13 @@ public class ProductAreaDal
         return da.ExceSQL(update);
     }
 
+    public static bool Delete(int id)
+    {
+        string sqlstr = "delete from gy_KName where k_ID='" + id + "'";
+        SqlData da = new SqlData();
+        return da.ExceSQL(sqlstr);
+    }
+
     public static bool Exist(string name)
     {
         bool exist = false;

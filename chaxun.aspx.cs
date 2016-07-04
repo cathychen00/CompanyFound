@@ -279,7 +279,7 @@ public partial class chaxun : System.Web.UI.Page
     {
         Response.Clear();
         Response.Buffer = true;
-        Response.Charset = "utf-7";
+        Response.Charset = "utf-";
         Response.AppendHeader("Content-Disposition", "attachment;filename=FileFlow.xls");
         Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-7");
         Response.ContentType = "application/ms-excel";
@@ -309,6 +309,7 @@ public partial class chaxun : System.Web.UI.Page
         SqlData sd = new SqlData();
         string state = lb;
         table_ID = GridView1.DataKeys[e.RowIndex].Value.ToString();
+        int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
         switch (lb)
         {
 
@@ -367,15 +368,9 @@ public partial class chaxun : System.Web.UI.Page
                 break;
 
             case ("产地信息"):
-                sqlstr = "delete from gy_KName where k_ID='" + GridView1.DataKeys[e.RowIndex].Value.ToString() + "'";
-                sqlcon = new SqlConnection(strCon);
-                sqlcom = new SqlCommand(sqlstr, sqlcon);
-                sqlcon.Open();
-                sqlcom.ExecuteNonQuery();
-                sqlcon.Close();
+                ProductAreaDal.Delete(id);
                 break;
             case ("用户信息"):
-                int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
                 UserInfoDal.Delete(id);
                 break;
         }
