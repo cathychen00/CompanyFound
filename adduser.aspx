@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/moudle/MasterPage.master" AutoEventWireup="true" CodeFile="adduser.aspx.cs" Inherits="adduser" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/moudle/MasterPage.master" AutoEventWireup="true" CodeFile="AddUser.aspx.cs" Inherits="adduser" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="z-index: 102; left: 71px; width: 76px; position: absolute; top: 0px; height: 1px">
