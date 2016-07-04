@@ -99,7 +99,7 @@ public partial class adduser : System.Web.UI.Page
             }
             read.Close();
             
-            string useradd = "insert into userinfo(UserName,UserPwd,userlevelID,usersexID)values('" + this.username.Text + "','"+da.Encrypt(this.userpwd.Text)+"','" + this.userlevel.SelectedValue + "','" + this.usersex.SelectedValue + "')";
+            string useradd = "insert into userinfo(UserName,UserPwd,userlevelID,usersexID)values('" + this.username.Text + "','"+Md5.Encrypt(this.userpwd.Text)+"','" + this.userlevel.SelectedValue + "','" + this.usersex.SelectedValue + "')";
             bool add = da.ExceSQL(useradd);
             if (add == true)
             {
@@ -142,7 +142,7 @@ public partial class adduser : System.Web.UI.Page
         string lr2 = Request.QueryString["查询内容2"];
         string id = Request.QueryString["id"];
         SqlData da = new SqlData();
-        string update = "update userinfo set username='" + this.username.Text + "',userpwd='" +da.Encrypt( this.userpwd.Text )+ "',usersexID='" + this.usersex.SelectedValue + "',userlevelID='"+this.userlevel.SelectedValue+"' where userinfoID='"+id+"'"; 
+        string update = "update userinfo set username='" + this.username.Text + "',userpwd='" +Md5.Encrypt( this.userpwd.Text )+ "',usersexID='" + this.usersex.SelectedValue + "',userlevelID='"+this.userlevel.SelectedValue+"' where userinfoID='"+id+"'"; 
         bool up = da.ExceSQL(update);
         if (up == true)
         {

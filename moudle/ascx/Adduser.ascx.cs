@@ -32,7 +32,7 @@ public partial class Adduser : System.Web.UI.UserControl
             Response.Write("<script lanuage=javascript>alert('您输入的密码不一致！');location='javascript:history.go(-1)'</script>");
         }
         SqlData da = new SqlData();
-        string useradd = "insert into userinfo(username,userpwd,userlevelID,usersexID)values('" + this.username.Text + "','" +da.Encrypt(this.userpwd.Text) + "','" + this.userlevel.SelectedValue + "','" + this.usersex.SelectedValue + "')";
+        string useradd = "insert into userinfo(username,userpwd,userlevelID,usersexID)values('" + this.username.Text + "','" +Md5.Encrypt(this.userpwd.Text) + "','" + this.userlevel.SelectedValue + "','" + this.usersex.SelectedValue + "')";
         bool add = da.ExceSQL(useradd);
         if (add == true)
         {

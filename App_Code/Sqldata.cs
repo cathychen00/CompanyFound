@@ -33,7 +33,6 @@ public class SqlData
         sqlcon = new SqlConnection(ConfigurationManager.AppSettings["conStr"]);
         sqlcon.Open();   //打开链接
     }
-
     #endregion
 
     #region  绑定用户页面中的GridView控件
@@ -135,17 +134,6 @@ public class SqlData
         return read;
     }
     #endregion
-
-
-    public string Encrypt(string strInput)
-    {
-        //转换为UTF8编码
-        byte[] b = Encoding.UTF8.GetBytes(strInput);
-
-        //计算字符串UTF8编码后的的MD5哈希值，并转换为字符串
-        MD5 md5 = new MD5CryptoServiceProvider();
-        return Encoding.UTF8.GetString(md5.ComputeHash(b));
-    }
 
     //
     public class MyTemplate : ITemplate
