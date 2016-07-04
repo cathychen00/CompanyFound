@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation = "false" CodeFile="chaxun.aspx.cs" Inherits="chaxun" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeFile="chaxun.aspx.cs" Inherits="chaxun" %>
 
 <%@ Register Src="moudle/ascx/heardmenu.ascx" TagName="heardmenu" TagPrefix="uc4" %>
 
@@ -10,9 +10,9 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>无标题页</title>
+    <title>查询</title>
     <link href="moudle/css/maincha.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -20,7 +20,8 @@
     <div>
         <div style="z-index: 101; left: 102px; width: 100px; position: absolute; top: 76px;
             height: 100px">
-            &nbsp;<uc2:Chaxunye ID="Chaxunye1" runat="server" />
+            &nbsp;
+            <uc2:Chaxunye ID="Chaxunye1" runat="server" />
         </div>
         <div style="z-index: 102; left: 1px; ; width: 998px; position: absolute; top: 100px;
             height: 100px">
