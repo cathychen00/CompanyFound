@@ -26,7 +26,7 @@ public partial class chaxun : System.Web.UI.Page
             }
         }
     }
-    //绑定
+    #region 绑定列表
     private void BindData()
     {
         string lb = Request.QueryString["查询类别"];
@@ -254,6 +254,7 @@ public partial class chaxun : System.Web.UI.Page
             sqlcon.Close();
         }
     }
+    #endregion
 
     protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
     {
@@ -267,16 +268,11 @@ public partial class chaxun : System.Web.UI.Page
 
     }
 
-
+    #region 导出Excel
     protected void Button1_Click(object sender, EventArgs e)
     {
-
-
         ExportDataGrid("online/ms-excel", "111.xls");
-
     }
-
-    #region 导出Excel
     private void ExportDataGrid(string FileType, string FileName)
     {
         Response.Clear();
@@ -297,12 +293,11 @@ public partial class chaxun : System.Web.UI.Page
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         GridView1.PageIndex = e.NewPageIndex;
-
     }
-    //删除
+
+    #region 删除
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-
         string lb = Request.QueryString["查询类别"];
 
         string sqlstr = null;
@@ -377,10 +372,11 @@ public partial class chaxun : System.Web.UI.Page
         
         BindData();
     }
-    
+    #endregion
+
+    #region 修改
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-
         if (e.CommandName.ToString() == "xg")
         {
 
@@ -426,6 +422,7 @@ public partial class chaxun : System.Web.UI.Page
             Response.Redirect(url);
         }
     }
+    #endregion
 }
 
 
